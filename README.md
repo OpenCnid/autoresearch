@@ -1,4 +1,3 @@
-```markdown
 # autoresearch — WSL2 / RTX Edition
 
 > Fork of [karpathy/autoresearch](https://github.com/karpathy/autoresearch) adapted for **NVIDIA RTX GPUs** (Ampere, Ada, Blackwell) running on **WSL2**.
@@ -13,8 +12,8 @@ Everything else is identical to upstream: same model architecture, same optimize
 
 ## Tested On
 
-| GPU | VRAM | OS | Status |
-|-----|------|----|--------|
+| GPU      | VRAM | OS                  | Status    |
+| -------- | ---- | ------------------- | --------- |
 | RTX 3090 | 24GB | Ubuntu 24.04 (WSL2) | ✅ Working |
 
 ## Quick Start
@@ -39,23 +38,23 @@ uv run train.py
 
 If you have less than 24GB VRAM, reduce `DEVICE_BATCH_SIZE` in `train.py`. If you OOM, halve it until it fits:
 
-| VRAM | Suggested DEVICE_BATCH_SIZE |
-|------|-----------------------------|
-| 24GB | 32 |
-| 16GB | 16 |
-| 10-12GB | 8 |
+| VRAM    | Suggested DEVICE_BATCH_SIZE |
+| ------- | --------------------------- |
+| 24GB    | 32                          |
+| 16GB    | 16                          |
+| 10-12GB | 8                           |
 
 For significantly smaller GPUs, also follow Karpathy's upstream recommendations: lower `DEPTH`, switch to TinyStories dataset, reduce `MAX_SEQ_LEN` in `prepare.py`.
 
 ## What's Different from Upstream
 
-| Feature | Upstream (H100) | This Fork (RTX/WSL2) |
-|---------|-----------------|----------------------|
-| Attention | Flash Attention 3 | PyTorch SDPA |
-| Compilation | torch.compile | Eager mode |
-| Window attention | Native FA3 windowed | Full causal (no window) |
-| Default batch size | 128 | 32 |
-| MFU | ~40% | ~3-5% (eager penalty) |
+| Feature            | Upstream (H100)     | This Fork (RTX/WSL2)    |
+| ------------------ | ------------------- | ----------------------- |
+| Attention          | Flash Attention 3   | PyTorch SDPA            |
+| Compilation        | torch.compile       | Eager mode              |
+| Window attention   | Native FA3 windowed | Full causal (no window) |
+| Default batch size | 128                 | 32                      |
+| MFU                | ~40%                | ~3-5% (eager penalty)   |
 
 ## Known Limitations
 
