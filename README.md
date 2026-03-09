@@ -73,4 +73,3 @@ Hi have a look at program.md and let's kick off a new experiment! let's do the s
 ## Upstream
 
 All credit to [@karpathy](https://github.com/karpathy) for the original [autoresearch](https://github.com/karpathy/autoresearch) concept and implementation.
-```
